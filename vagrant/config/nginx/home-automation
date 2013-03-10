@@ -1,0 +1,19 @@
+server {
+  listen   80;
+  server_name  home-automation.tenx.in;
+
+  access_log  /var/log/nginx/home-automation.access.log;
+
+  root   /vagrant/www;
+
+  location / {
+    try_files $uri $uri/ /index.php?$request_uri;
+  } 
+  
+  location ~ \.php$ {
+     include /etc/nginx/fastcgi_params;
+     fastcgi_pass 127.0.0.1:9000;
+     fastcgi_index index.php;
+     fastcgi_param SCRIPT_FILENAME /vagrant/www$fastcgi_script_name;
+  }
+}

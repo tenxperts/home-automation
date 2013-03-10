@@ -1,0 +1,7 @@
+tmp
+vagrant
+*.lock
+sites/*
+cookbooks
+nginx-config
+www
